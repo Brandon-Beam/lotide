@@ -1,9 +1,10 @@
 let assertArraysEqual = function(one,two) {
   for (let num of one) {
     if (one[num] !== two[num]) {
-      return console.log('sadness')
+       console.log('sadness')
+       return
       } 
-  } return console.log('yay')
+  }  console.log('yay')
 } 
 assertArraysEqual([1,2,3],[1,2,5])
 assertArraysEqual([1,2,3],[1,2,3])
