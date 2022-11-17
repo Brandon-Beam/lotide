@@ -1,0 +1,46 @@
+let assertEqual = function(actual, expected) {
+  if (actual === expected) {
+    console.log(`👍 Assertion Passed: ${actual} === ${expected}`);
+  } else {
+    console.log(`😭Assertion Failed: ${actual} !== ${expected}`);
+  }
+};
+let eqArrays = function(one, two) {
+  for (let num of one) {
+    if (one[num] !== two[num]) {
+      return false;
+    }
+  } return true;
+};
+const eqObjects = (object1, object2) => {
+  const object1keys = Object.keys(object1);
+  const object2keys = Object.keys(object2);
+
+  if (object1keys.length !== object2keys.length) {
+    return false;
+  }
+  for (const key of object1keys) {
+    const value1 = object1[key];
+    const value2 = object2[key];
+    if (Array.isArray(value1) && Array.isArray(value2)) {
+      if (eqArrays(value1,value2) === false) {
+        return false;
+      }
+      continue;
+    }
+    if (value1 !== value2) {
+      return false;
+    }
+  } return true;
+};
+const ab = { a: "1", b: "2" };
+const ba = { b: "2", a: "1" };
+assertEqual(eqObjects(ab, ba), true); // => true
+const abc = { a: "1", b: "2", c: "3" };
+assertEqual(eqObjects(ab, abc), false); // => false
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+assertEqual(eqObjects(cd, dc), true); // => true
+
+const cd2 = { c: "1", d: ["2", 3, 4] };
+assertEqual(eqObjects(cd, cd2), false); // => false
