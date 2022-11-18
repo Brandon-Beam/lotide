@@ -8,7 +8,7 @@ const map = (array, callback) => {
     results.push(callback(item))
   } return results;
 }
-let assertArraysEqual = function(one,two) {
+const assertArraysEqual = function(one,two) {
   for (let num of one) {
     if (one[num] !== two[num]) {
        console.log('sadness')
