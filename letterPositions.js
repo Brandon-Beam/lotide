@@ -7,17 +7,7 @@ const letterPositions = function (sentence) {
       results[sentence[i]] = []
       results[sentence[i]].push(i)
     }
-  } delete results[' '] 
-  console.log(results)
+  } delete results[' ']
   return results;
 };
-let assertArraysEqual = function(one,two) {
-  for (let num of one) {
-    if (one[num] !== two[num]) {
-       console.log('sadness')
-       return
-      } 
-  }  console.log('yay')
-} 
-assertArraysEqual(letterPositions("hello").e, [1]);
-letterPositions("lighthouse in the house")
+module.exports = letterPositions
